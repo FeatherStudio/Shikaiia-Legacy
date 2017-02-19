@@ -1,0 +1,5 @@
+class BaseBattlefield extends BaseZone {
+
+
+
+}

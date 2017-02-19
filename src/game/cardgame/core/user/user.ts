@@ -1,0 +1,3 @@
+class BaseUser {
+    id: number;
+}

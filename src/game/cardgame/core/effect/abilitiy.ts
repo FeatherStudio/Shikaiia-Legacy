@@ -1,0 +1,3 @@
+class BaseKeywordAbility{
+    //Abilities
+}
