@@ -1,4 +1,11 @@
 abstract class BaseZone {
-    cards: BaseCardCollection;
+    collection: BaseCardCollection;
 
+    get currentCardCount(){
+        return this.collection.size;
+    }
+
+    at(index: number){
+        return this.collection.cards[index];
+    }
 }

@@ -17,4 +17,8 @@ class BaseOptions {
         return 1;
     };
 
+    public static get maxCreatureCount(){
+        return 9;
+    }
+
 }

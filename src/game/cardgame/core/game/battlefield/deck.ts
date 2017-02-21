@@ -10,12 +10,18 @@ class BaseDeck {
         this.collection.remove(index);
     }
 
+    get cards() {
+        return this.collection.cards;
+    }
+
     get(from: number, to: number): BaseCard[] {
         return this.collection.cards.slice(from, to)
     }
 
     drawCard(count: number): BaseCard[] {
-        return this.get(0, count);
+        let rest = this.cards.length;
+        let actual = count > rest ? rest : count;
+        return this.get(0, actual);
     }
 
     sort() {

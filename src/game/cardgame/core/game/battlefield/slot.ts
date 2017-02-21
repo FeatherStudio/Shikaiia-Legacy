@@ -2,18 +2,29 @@
 // game zone like deck/field/graveyard, so it can be easy to add new zone like "environment card", "trap card"
 
 class BaseSlot {
-    zones: BaseZone[];
+    zones: {[key: string]: BaseZone};
 
-    constructor(){
-        this.add(new BaseGraveyard());
-        this.add(new BaseBattlefield());
+    constructor() {
+        this.add("graveyard", new BaseGraveyard());
+        this.add("battlefield", new BaseBattlefield());
     }
 
-    add(zone: BaseZone){
-        this.zones.push(zone);
+    get graveyard(){
+        return this.get("graveyard") as BaseGraveyard;
+    }
+    get battlefield(){
+        return this.get("battlefield") as BaseBattlefield;
     }
 
-    remove(index: number){
-        this.zones.splice(index,1);
+    get(name: string) {
+        return this.zones[name];
+    }
+
+    add(name: string, zone: BaseZone) {
+        this.zones[name] = zone;
+    }
+
+    remove(name: string) {
+        delete this.zones[name];
     }
 }

@@ -1,8 +1,16 @@
 class BaseCardCollection {
     cards: BaseCard[];
 
+    get size(){
+        return this.cards.length;
+    }
+
     add(target: BaseCard) {
         this.cards.push(target);
+    }
+
+    addAt(target: BaseCard, position: number){
+        this.cards[position] = target;
     }
 
     remove(index: number) {
