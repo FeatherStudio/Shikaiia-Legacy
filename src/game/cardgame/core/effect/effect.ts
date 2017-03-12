@@ -1,3 +1,3 @@
-class BaseEffect{
+export class BaseEffect{
 //Effect
 }

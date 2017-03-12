@@ -1,3 +1,3 @@
-class BaseKeywordAbility{
+export class BaseKeywordAbility{
     //Abilities
 }

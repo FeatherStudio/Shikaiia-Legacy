@@ -1,4 +1,4 @@
-class BaseManaColor {
+export class BaseManaColor {
     //ManaColor
     public name: string;
 

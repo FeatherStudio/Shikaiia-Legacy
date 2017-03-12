@@ -1,4 +1,6 @@
-class BaseDeck {
+import {BaseCard} from "../../card/card";
+import {SortedCardCollection} from "../../card/cardcolleciton";
+export class BaseDeck {
     collection: SortedCardCollection;
 
     add(target: BaseCard) {

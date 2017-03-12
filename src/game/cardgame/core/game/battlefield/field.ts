@@ -1,4 +1,7 @@
-class BaseBattlefield extends BaseZone {
+import {BaseCard} from "../../card/card";
+import {BaseZone} from "./zone";
+import {BaseOptions} from "../../database/config";
+export class BaseBattlefield extends BaseZone {
     size = BaseOptions.maxCreatureCount;
 
     add(target: BaseCard, position: number) {

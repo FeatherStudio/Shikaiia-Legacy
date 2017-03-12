@@ -1,5 +1,7 @@
 import {Util} from "../../../../lib/util/array";
-class BaseRoom {
+import {BaseUser} from "../user/user";
+import {BasePlayer} from "./player";
+export class BaseRoom {
     id: number;
 
     teams: BaseTeam[];
@@ -23,10 +25,12 @@ class BaseRoom {
 
     addUser(user: BaseUser, teamName: string) {
         this.searchTeam(teamName).add(user);
+        user.game = this.game;
     }
 
     canStart(): boolean {
-        return !(this.teams.some(x => x.size !== 1));
+        // override this to extend
+        return !(this.teams.some(x => x.size !== x.max));
     }
 
     start() {
@@ -37,14 +41,20 @@ class BaseRoom {
 
 }
 
-class BaseTeam {
+export class BaseTeam {
     name: string;
     users: BaseUser[];
     max = 1;
     order: number;
 
+    lost = false;
+
     public get size() {
         return this.users.length;
+    }
+
+    public get players() {
+        return this.users.map(x => x.player);
     }
 
     constructor(name: string) {
@@ -54,6 +64,7 @@ class BaseTeam {
     add(user: BaseUser) {
         if (this.size < this.max) {
             this.users.push(user);
+            user.team = this;
         } else {
             raise(`Team ${this.name} is full, but ${user.id} want to join.`);
         }
@@ -67,6 +78,11 @@ class BaseTeam {
         }
         this.users.splice(index, 1);
     }
+
+    hasSurvivor() {
+        this.lost = !this.players.some(x => x.life > 0);
+        return !this.lost;
+    }
 }
 
 class BaseObserver extends BaseTeam {
@@ -76,11 +92,13 @@ class BaseObserver extends BaseTeam {
     }
 }
 
-class BaseGame {
+export class BaseGame {
     // usage to implement custom game settings
     settings: any;
     room: BaseRoom;
     players: BasePlayer[];
+
+    end = false;
 
     nextGen: IterableIterator<any>;
 
@@ -113,8 +131,40 @@ class BaseGame {
     }
 
     *start() {
-        for(let i = 0; i < this.players.length; i++){
-            yield this.players[i].turn(this.nextGen);
+        for (let i = 0; i < this.players.length; i++) {
+            if (this.end === false) {
+                yield this.players[i].turn(this.nextGen);
+            }
         }
+    }
+
+    validate() {
+        let survivor: BaseTeam = null;
+        for (let team of this.teams) {
+            // warning in iterate all enumerable property names of an object
+            if (team.hasSurvivor()) {
+                if (!survivor) {
+                    survivor = null;
+                    break;
+                } else {
+                    survivor = team;
+                }
+            }
+        }
+        if (!survivor) {
+            this.drawGame();
+        } else {
+            this.win(survivor);
+        }
+    }
+
+    win(team: BaseTeam) {
+        console.log(`Team ${team.name} win.`);
+        this.end = true;
+    }
+
+    drawGame() {
+        console.log("Draw game.");
+        this.end = true;
     }
 }

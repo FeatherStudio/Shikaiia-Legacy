@@ -1,4 +1,5 @@
-class BaseCardCollection {
+import {BaseCard} from "./card";
+export class BaseCardCollection {
     cards: BaseCard[];
 
     get size(){
@@ -18,7 +19,7 @@ class BaseCardCollection {
     }
 }
 
-class SortedCardCollection extends BaseCardCollection{
+export class SortedCardCollection extends BaseCardCollection{
     add(target: BaseCard){
         super.add(target);
         // todo sort

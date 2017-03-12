@@ -1,4 +1,5 @@
-abstract class BaseZone {
+import {BaseCardCollection} from "../../card/cardcolleciton";
+export abstract class BaseZone {
     collection: BaseCardCollection;
 
     get currentCardCount(){

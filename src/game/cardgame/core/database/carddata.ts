@@ -1,4 +1,5 @@
-class BaseCardData {
+import {BaseManaColor} from "../card/mana";
+export class BaseCardData {
     // DBCard, should not be used, store card data from database
     public type = 0;
 

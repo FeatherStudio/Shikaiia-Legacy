@@ -1,7 +1,10 @@
 // use to slot game zone
 // game zone like deck/field/graveyard, so it can be easy to add new zone like "environment card", "trap card"
 
-class BaseSlot {
+import {BaseZone} from "./zone";
+import {BaseBattlefield} from "./field";
+import {BaseGraveyard} from "./graveyard";
+export class BaseSlot {
     zones: {[key: string]: BaseZone};
 
     constructor() {

@@ -1,10 +1,11 @@
-class BaseBuff {
+import {BaseCard} from "../card/card";
+export class BaseBuff {
     apply(target: BaseCard) {
         // do the thing you want
     }
 }
 
-class BaseBuffType {
+export class BaseBuffType {
     public RAISE_ATTACK = 1;
     public RAISE_DEFENSE = 2;
     public RAISE_LIFE = 3;

@@ -1,4 +1,4 @@
-class BaseOptions {
+export class BaseOptions {
     //CoreOptions
 
     public static get playerLife() {

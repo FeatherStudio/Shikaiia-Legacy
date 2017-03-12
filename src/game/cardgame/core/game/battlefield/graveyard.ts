@@ -1,5 +1,6 @@
 // include graveyard and void(excluded in game)
-class BaseGraveyard extends BaseZone {
+import {BaseZone} from "./zone";
+export class BaseGraveyard extends BaseZone {
 
 
 
