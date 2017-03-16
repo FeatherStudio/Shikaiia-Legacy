@@ -164,7 +164,8 @@ export class BaseGame {
     }
 
     drawGame() {
-        console.log("Draw game.");
+        // 平局
+        console.log("Draw.");
         this.end = true;
     }
 }

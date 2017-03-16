@@ -1,7 +1,12 @@
 import {BaseCard} from "../../card/card";
-import {SortedCardCollection} from "../../card/cardcolleciton";
+import {SortedCardCollection, BASIC_COLLECTION, BaseCardCollection} from "../../card/cardcolleciton";
 export class BaseDeck {
     collection: SortedCardCollection;
+    size: number;
+
+    constructor(collection: SortedCardCollection = null){
+        this.collection = collection === null ? BASIC_COLLECTION : collection;
+    }
 
     add(target: BaseCard) {
         this.collection.add(target);
@@ -34,4 +39,9 @@ export class BaseDeck {
 
     }
 
+    static testDeckConstruct(){
+        return new BaseDeck(SortedCardCollection.testCollectionConstruct());
+    }
 }
+
+export const BASIC_TEST_DECK = BaseDeck.testDeckConstruct();

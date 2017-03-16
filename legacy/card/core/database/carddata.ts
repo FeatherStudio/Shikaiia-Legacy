@@ -1,4 +1,5 @@
 import {BaseManaColor} from "../card/mana";
+import {BaseEffect} from "../effect/effect";
 export class BaseCardData {
     // DBCard, should not be used, store card data from database
     public type = 0;
@@ -12,4 +13,5 @@ export class BaseCardData {
 
     public effects: BaseEffect[];
 }
+
 

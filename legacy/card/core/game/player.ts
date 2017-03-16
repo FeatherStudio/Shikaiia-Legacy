@@ -1,6 +1,6 @@
 import {BaseUser} from "../user/user";
-import {BaseCard} from "../card/card"
-import {BaseDeck} from "./battlefield/deck";
+import {BaseCard} from "../card/card";
+import {BaseDeck, BASIC_TEST_DECK} from "./battlefield/deck";
 import {BaseOptions} from "../database/config";
 import {BaseSlot} from "./battlefield/slot";
 
@@ -18,8 +18,8 @@ export class BasePlayer {
     selfTurn = false;
     nextGen: IterableIterator<any>;
 
-    constructor(deck: BaseDeck) {
-        this.deck = deck;
+    constructor(deck: BaseDeck = null) {
+        this.deck = deck === null ? BASIC_TEST_DECK : deck;
         this.deck.shuffle();
     }
 

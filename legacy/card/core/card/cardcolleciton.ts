@@ -1,4 +1,5 @@
 import {BaseCard} from "./card";
+import {range} from "../../../../../lib/extension/collection/array";
 export class BaseCardCollection {
     cards: BaseCard[];
 
@@ -24,4 +25,14 @@ export class SortedCardCollection extends BaseCardCollection{
         super.add(target);
         // todo sort
     }
+
+    static testCollectionConstruct(){
+        let collection = new SortedCardCollection();
+        for (let i of range(40)){
+            collection.add(BaseCard.testCardConstruct());
+        }
+        return collection
+    }
 }
+
+export const BASIC_COLLECTION = new SortedCardCollection();

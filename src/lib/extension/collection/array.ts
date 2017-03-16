@@ -19,3 +19,5 @@ export class Util {
         return array;
     }
 }
+
+export const range = (i) => [...Array(i).keys()];

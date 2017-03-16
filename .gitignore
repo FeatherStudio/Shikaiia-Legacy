@@ -5,6 +5,7 @@
 
 .idea/
 *.iml
+dist/
 
 ## File-based project format:
 *.iws
