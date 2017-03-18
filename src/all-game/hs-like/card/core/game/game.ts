@@ -1,6 +1,6 @@
-import {Util} from "../../../../lib/util/array";
 import {BaseUser} from "../user/user";
 import {BasePlayer} from "./player";
+import {randomize} from "../../../../../lib/extension/collection/array";
 export class BaseRoom {
     id: number;
 
@@ -115,7 +115,7 @@ export class BaseGame {
     }
 
     init() {
-        this.teams = Util.randomize(this.room.teams);
+        this.teams = randomize(this.room.teams);
         this.teams.forEach((x, i) => x.order = i);
 
         this.teams.forEach(x => {

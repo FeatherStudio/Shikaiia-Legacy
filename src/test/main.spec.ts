@@ -1,5 +1,5 @@
-import {BaseRoom, BaseGame} from "../../legacy/card/core/game/game";
-import {BaseUser} from "../../legacy/card/core/user/user";
+import {BaseRoom, BaseGame} from "../all-game/hs-like/card/core/game/game";
+import {BaseUser} from "../all-game/hs-like/card/core/user/user";
 const fullTest = true;
 
 if (fullTest) {
